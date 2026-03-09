@@ -843,8 +843,10 @@ def complete():
     invite_code = InviteCodeManager.get_invite_code()
     media_server_url = None
     if invite_code:
-        _, invitation = InviteCodeManager.validate_invite_code(invite_code)
-        if invitation:
+        invite_code_valid, invitation = InviteCodeManager.validate_invite_code(
+            invite_code
+        )
+        if invite_code_valid and invitation:
             # Prefer multi-server list, fall back to single server
             servers = invitation.servers or (
                 [invitation.server] if invitation.server else []

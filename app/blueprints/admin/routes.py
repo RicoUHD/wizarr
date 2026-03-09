@@ -1093,7 +1093,7 @@ def _group_users_for_display(user_list):
 
     cards = []
     for lst in groups.values():
-        primary = min(lst, key=lambda x: (x.username or ""))
+        primary = min(lst, key=lambda x: x.username or "")
         photo = next((a.photo for a in lst if a.photo), None)
         expire_dates = [a.expires for a in lst if a.expires]
         expires = min(expire_dates) if expire_dates else None

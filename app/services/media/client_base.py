@@ -531,7 +531,9 @@ class MediaClient(ABC):
 
             try:
                 user = (
-                    User.query.filter_by(code=code, server_id=getattr(self, "server_id", None))
+                    User.query.filter_by(
+                        code=code, server_id=getattr(self, "server_id", None)
+                    )
                     .order_by(User.id.desc())
                     .first()
                 )

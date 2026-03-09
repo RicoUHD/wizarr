@@ -8,14 +8,15 @@ link to successfully creating accounts on media servers.
 import contextlib
 import multiprocessing
 import os
-from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+from pathlib import Path
 from unittest.mock import patch
 
 import pytest
-from playwright.sync_api import Page, TimeoutError as PlaywrightTimeoutError, expect
+from playwright.sync_api import Page, expect
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
 # Fix for Python 3.14+ multiprocessing compatibility with pytest-flask live_server
 # GitHub Actions uses spawn/forkserver by default which can't pickle local functions
